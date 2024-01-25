@@ -9,8 +9,7 @@ const HomeNotAuth = () => {
         <title>Welcome to Phone Book </title>
       </Helmet>
       <h1>Welcome to Phone Book</h1>
-      <Link to="/register">Register</Link>
-      <Link to="/login">Login</Link>
+      <Link to="/modal">Get start</Link>
     </>
   );
 };

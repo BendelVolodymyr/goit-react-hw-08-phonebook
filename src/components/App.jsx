@@ -1,9 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { RestrictedRoute } from './RestrictedRoute';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'hooks/useAuth';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from '../redux/auth/operations';
 
 const HomeInAuthPage = lazy(() => import('../pages/HomeInAuth'));
 const HomeNotAuthPage = lazy(() => import('../pages/HomeNotAuth'));
@@ -14,6 +16,11 @@ const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
   const { isLogIn, isRefreshing } = useAuth();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return isRefreshing ? (
     <b>Зачекайте оновлення... Refreshing user...</b>
@@ -26,17 +33,12 @@ export const App = () => {
         />
         <Route
           path="/login"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
-          }
+          element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
         />
         <Route
           path="/register"
           element={
-            <RestrictedRoute
-              redirectTo="/contacts"
-              component={<RegisterPage />}
-            />
+            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
           }
         />
 

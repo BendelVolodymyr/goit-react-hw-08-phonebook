@@ -1,7 +1,10 @@
+import { useAuth } from 'hooks/useAuth';
+
 const HomeInAuth = () => {
+  const { user } = useAuth();
   return (
     <>
-      <h1>HomeInAuth result</h1>
+      <h1>Welcome {user.name}</h1>
     </>
   );
 };
