@@ -18,13 +18,15 @@ const Contacts = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Your contacts</title>
-      </Helmet>
-      <ContactFormAdd />
-      <div>{isLoading && 'Request in progress...'}</div>
-      {showModal && <Modal />}
-      <ContactsList />
+      <div className='contact'>
+        <Helmet>
+          <title>Your contacts</title>
+        </Helmet>
+        <ContactFormAdd />
+        <div className="contact">{isLoading && 'Request in progress...'}</div>
+        {showModal && <Modal />}
+        <ContactsList />
+      </div>
     </>
   );
 };

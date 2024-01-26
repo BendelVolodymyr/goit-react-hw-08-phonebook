@@ -1,9 +1,30 @@
-.form {
+.box__form {
+    padding: 40px;
+    height: 500px;
+    background: linear-gradient(135deg, #5fc3e4 0%, #e55d87 100%);
+    display: flex;
+    justify-content: center;
+}
+
+.form__box {
+    text-align: center;
     width: 320px;
+    padding: 20px;
+    border: double 5px #5fc3e4;
+}
+
+.form__box_title {}
+
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .label {
     display: flex;
+    text-align: end;
     flex-direction: column;
-    margin-bottom: 16px;
+
 }

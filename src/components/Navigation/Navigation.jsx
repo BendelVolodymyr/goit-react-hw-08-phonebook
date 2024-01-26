@@ -6,9 +6,15 @@ export const Navigation = () => {
   return (
     <>
       <div className={styles.nav}>
-        <nav className={styles.nav__box}>
-          <NavLink to="/">Home</NavLink>
-          {isLogIn && <NavLink to="/contacts">Contacts</NavLink>}
+        <nav>
+          <ul className={styles.nav__box}>
+            <li className={styles.nav__box_link}>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li className={styles.nav__box_link}>
+              {isLogIn && <NavLink to="/contacts">Contacts</NavLink>}
+            </li>
+          </ul>
         </nav>
       </div>
     </>

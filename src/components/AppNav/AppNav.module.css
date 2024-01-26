@@ -4,14 +4,14 @@
     padding: 20px 50px;
     height: 72px;
     margin-bottom: 20px;
-    background-color: #31323A;
-    box-shadow: 10px 21px 29px 10px rgba(170, 134, 160, 0.8);
+    background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
 }
 
 .header__box {
     margin: 0 auto;
     width: 100%;
     max-width: 1158px;
+    padding: 0 20px;
     height: 32px;
     display: flex;
     justify-content: space-between;

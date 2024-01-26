@@ -6,10 +6,15 @@ const HomeNotAuth = () => {
   return (
     <>
       <Helmet>
-        <title>Welcome to Phone Book </title>
+        <title>Home Phone Book </title>
       </Helmet>
-      <h1>Welcome to Phone Book</h1>
-      <Link to="/modal">Get start</Link>
+      <div className="home-not-auth">
+        <h1 className="home-not-auth__title">Welcome to Phone Book</h1>
+        <div className="home-not-auth__box-link">
+          <Link to="/login">Sign in</Link>
+          <Link to="/register">Create an account</Link>
+        </div>
+      </div>
     </>
   );
 };

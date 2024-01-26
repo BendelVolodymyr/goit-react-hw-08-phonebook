@@ -10,7 +10,6 @@
     position: relative;
 }
 
-a:visited,
-a:link {
-    color: #ba1689;
+.list_link>a {
+    color: #ffffff;
 }

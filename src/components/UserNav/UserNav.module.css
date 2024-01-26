@@ -11,6 +11,7 @@
 }
 
 .global_box__out:hover .box__out {
+    color: rgb(129, 129, 215);
     visibility: visible;
     display: block;
 }

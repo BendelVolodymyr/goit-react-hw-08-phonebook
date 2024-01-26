@@ -5,14 +5,14 @@ export const AuthNav = () => {
   return (
     <div className={styles.nav}>
       <ul className={styles.box__list}>
-        <li className={styles.list_link}> 
-          <NavLink className={styles.link} to="/register">
-            Register
+        <li className={styles.list_link}>
+          <NavLink id="register" to="/register">
+            Create an account
           </NavLink>
         </li>
-        <li>
-          <NavLink className={styles.link} to="/login">
-            Log In
+        <li className={styles.list_link}>
+          <NavLink id="login" to="/login">
+            Sign in
           </NavLink>
         </li>
       </ul>

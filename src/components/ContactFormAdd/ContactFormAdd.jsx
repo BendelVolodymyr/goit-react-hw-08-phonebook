@@ -26,17 +26,26 @@ export const ContactFormAdd = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <label>
-          <input placeholder="Name" type="text" name="name" required />
-        </label>
+      <div className={styles.form}>
+        <div>
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <label>
+              <input placeholder="Name" type="text" name="name" required />
+            </label>
 
-        <label>
-          <input placeholder="Phone number" type="tel" name="number" required />
-        </label>
+            <label>
+              <input
+                placeholder="Phone number"
+                type="tel"
+                name="number"
+                required
+              />
+            </label>
 
-        <button type="submit">Add Contact</button>
-      </form>
+            <button type="submit">Add Contact</button>
+          </form>
+        </div>
+      </div>
     </>
   );
 };

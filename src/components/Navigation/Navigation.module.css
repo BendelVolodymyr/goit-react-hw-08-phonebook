@@ -1,6 +1,12 @@
-.nav {}
+.nav__box_link {
+    position: relative;
+}
 
 .nav__box {
     display: flex;
     gap: 50px;
+}
+
+.nav__box>a {
+    color: #ffffff;
 }
