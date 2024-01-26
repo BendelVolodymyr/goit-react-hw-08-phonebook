@@ -3,13 +3,19 @@ import styles from './AuthNav.module.css';
 
 export const AuthNav = () => {
   return (
-    <div>
-      <NavLink className={styles.link} to="/register">
-        Register
-      </NavLink>
-      <NavLink className={styles.link} to="/login">
-        Log In
-      </NavLink>
+    <div className={styles.nav}>
+      <ul className={styles.box__list}>
+        <li className={styles.list_link}> 
+          <NavLink className={styles.link} to="/register">
+            Register
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className={styles.link} to="/login">
+            Log In
+          </NavLink>
+        </li>
+      </ul>
     </div>
   );
 };

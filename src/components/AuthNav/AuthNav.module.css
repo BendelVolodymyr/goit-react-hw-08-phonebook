@@ -1,0 +1,16 @@
+.nav {}
+
+.box__list {
+    display: flex;
+    gap: 20px;
+    padding: 5px;
+}
+
+.list_link {
+    position: relative;
+}
+
+a:visited,
+a:link {
+    color: #ba1689;
+}

@@ -1,0 +1,19 @@
+.header {
+    margin: 0 auto;
+    align-items: center;
+    padding: 20px 50px;
+    height: 72px;
+    margin-bottom: 20px;
+    background-color: #31323A;
+    box-shadow: 10px 21px 29px 10px rgba(170, 134, 160, 0.8);
+}
+
+.header__box {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1158px;
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

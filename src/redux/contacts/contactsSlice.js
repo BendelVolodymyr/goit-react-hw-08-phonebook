@@ -53,6 +53,11 @@ const contactsSlice = createSlice({
       .addCase(UpdateInExistingContact.pending, handlePending)
       .addCase(UpdateInExistingContact.fulfilled, (state, { payload }) => {
         state.isLoading = false;
+        // const result = state.items.filter(contact => contact.id !== payload.id);
+
+        // state.items = [...result, payload];
+        const index = state.items.findIndex(option => option.id === payload.id);
+        state.items.splice(index, 1, payload);
         state.error = null;
       })
       .addCase(UpdateInExistingContact.rejected, handleRejected);

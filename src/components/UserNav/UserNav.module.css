@@ -1,0 +1,16 @@
+.global_box__out {
+    max-width: 1158px;
+    max-height: 72px;
+    position: relative;
+}
+
+.box__out {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+}
+
+.global_box__out:hover .box__out {
+    visibility: visible;
+    display: block;
+}

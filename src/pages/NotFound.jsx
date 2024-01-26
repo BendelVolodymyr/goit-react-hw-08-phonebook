@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 const NotFound = () => {
   useEffect(() => {
     setTimeout(function () {
-      window.location = '/';
+      window.location = '/goit-react-hw-08-phonebook';
     }, 5000);
   });
   return (
