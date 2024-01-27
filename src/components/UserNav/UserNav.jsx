@@ -9,10 +9,10 @@ export const UserNav = () => {
   return (
     <>
       <div className={styles.global_box__out}>
-        <p>LogOut</p>
+        <p className={styles.global_box__out_text}>{user.email}</p>
         <div className={styles.box__out}>
           <p>{user.name}</p>
-          <p>{user.email}</p>
+          <p></p>
           <button
             onClick={() => {
               dispatch(LogOut());

@@ -23,8 +23,8 @@ export const RegisterForm = () => {
   };
 
   return (
-    <div className={styles.box__form}>
-      <div className={styles.form__box}>
+    <div className={styles.box__form__global}>
+      <div className={styles.box__form}>
         <h2 className={styles.form__box_title}>Create an account</h2>
         <form className={styles.form} onSubmit={handleSubmit}>
           <label className={styles.label}>

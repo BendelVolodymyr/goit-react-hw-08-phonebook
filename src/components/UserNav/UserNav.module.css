@@ -8,10 +8,23 @@
     position: absolute;
     visibility: hidden;
     display: none;
+    background-color: #5fc3e4;
+    right: 0px;
+    width: 150px;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.box__out:hover {
+    color: #2F3761;
+}
+
+.global_box__out_text:hover {
+    color: #2F3761;
 }
 
 .global_box__out:hover .box__out {
-    color: rgb(129, 129, 215);
     visibility: visible;
     display: block;
 }
