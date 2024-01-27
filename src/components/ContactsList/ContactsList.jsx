@@ -2,19 +2,12 @@ import { useContacts } from 'hooks/useContacts';
 import styles from './ContactsList.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/operations';
-import { setShowModal } from '../../redux/contacts/showModal';
+import { useState } from 'react';
+import { Modal } from 'components/Modal/Modal';
+import { ContactListItem } from './ContactListItem/ContactListItem';
 
 export const ContactsList = () => {
-  const dispatch = useDispatch();
   const { contacts, contactsAndFilter } = useContacts();
-
-  const handleRemove = item => {
-    dispatch(setShowModal(item));
-  };
-
-  const handleDelete = id => {
-    dispatch(deleteContact(id));
-  };
 
   return (
     <>
@@ -26,17 +19,7 @@ export const ContactsList = () => {
       )}
       <ul className={styles.list__box}>
         {contactsAndFilter.map(item => (
-          <li key={item.id} className={styles.list}>
-            <p>
-              <b>{item.name}</b> <b>{item.number}</b>
-            </p>
-            <button type="button" onClick={() => handleRemove(item)}>
-              Edit
-            </button>
-            <button type="button" onClick={() => handleDelete(item.id)}>
-              Delete
-            </button>
-          </li>
+          <ContactListItem key={item.id} item={item} />
         ))}
       </ul>
     </>

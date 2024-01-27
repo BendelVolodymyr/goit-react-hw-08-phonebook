@@ -7,15 +7,14 @@ import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from '../redux/auth/operations';
 
-const HomeInAuthPage = lazy(() => import('../pages/HomeInAuth'));
-const HomeNotAuthPage = lazy(() => import('../pages/HomeNotAuth'));
+const Home = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const NotFoundPage = lazy(() => import('../pages/NotFound'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
-  const { isLogIn, isRefreshing } = useAuth();
+  const { isRefreshing } = useAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,18 +26,20 @@ export const App = () => {
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route
-          index
-          element={isLogIn ? <HomeInAuthPage /> : <HomeNotAuthPage />}
-        />
+        <Route index element={<Home />} />
         <Route
           path="/login"
-          element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
         />
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
           }
         />
 

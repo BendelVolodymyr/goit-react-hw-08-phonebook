@@ -1,54 +1,29 @@
 import { createPortal } from 'react-dom';
 import styles from './Modal.module.css';
-import { useContacts } from '../../hooks/useContacts';
 import { useDispatch } from 'react-redux';
-import { setShowModal } from '../../redux/contacts/showModal';
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { UpdateInExistingContact } from '../../redux/contacts/operations';
 
 const modalRoot = document.querySelector('#modal__root');
 
-export const Modal = () => {
-  const { itemModal } = useContacts();
+export const Modal = ({ item, toogle }) => {
   const dispatch = useDispatch();
+  const [form, setForm] = useState({ name: item.name, number: item.number });
 
-  useEffect(() => {
-    const handleKeyDown = e => {
-      if (e.code === 'Escape') {
-        return dispatch(setShowModal({ id: null, name: null, number: null }));
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  });
-
-  const handleDropClick = e => {
-    if (e.currentTarget === e.target) {
-      dispatch(setShowModal({ id: null, name: null, number: null }));
-    }
+  const { name, number } = form;
+  const handleChange = ({ target: { name, value } }) => {
+    setForm(prevState => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    const name = e.currentTarget.elements.name.value.trim();
-    const number = e.currentTarget.elements.number.value.trim();
-
-    const objectToApi = { id: itemModal.id, name: name, number: number };
-
-    const validForm = name === '' || number === '';
-
-    if (!validForm) {
-      dispatch(UpdateInExistingContact(objectToApi));
-    } else {
-      alert('Друже поле не може бути пустим');
-    }
+    const newObj = { name, number, id: item.id };
+    dispatch(UpdateInExistingContact(newObj));
+    toogle();
   };
 
   return createPortal(
-    <div className={styles.modal__backdrop} onClick={handleDropClick}>
+    <div className={styles.modal__backdrop}>
       <div className={styles.modal__box}>
         <form
           className={styles.form}
@@ -60,8 +35,9 @@ export const Modal = () => {
             <input
               type="text"
               name="name"
-              defaultValue={itemModal.name}
+              value={name}
               autoComplete="name"
+              onChange={handleChange}
             />
           </label>
           <label className={styles.label}>
@@ -69,8 +45,9 @@ export const Modal = () => {
             <input
               type="phone"
               name="number"
-              defaultValue={itemModal.number}
+              value={number}
               autoComplete="phone"
+              onChange={handleChange}
             />
           </label>
           <button type="submit">Edit contact</button>

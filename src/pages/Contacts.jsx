@@ -20,14 +20,13 @@ const Contacts = () => {
   return (
     <>
       <div className="contact">
-        <Helmet>
-          <title>Your contacts</title>
-        </Helmet>
-        <ContactFormAdd />
-        <Filter />
-        <div className="contact">{isLoading && 'Request in progress...'}</div>
-        {showModal && <Modal />}
-        <ContactsList />
+        <div className="contact__form_box">
+          <ContactFormAdd />
+          <Filter />
+          {isLoading && <h2>Request in progress...</h2>}
+          {showModal && <Modal />}
+          <ContactsList />
+        </div>
       </div>
     </>
   );

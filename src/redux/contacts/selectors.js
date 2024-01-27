@@ -8,10 +8,6 @@ export const selectError = state => state.contacts.error;
 
 export const selectFilter = state => state.filter.filter;
 
-export const selectShowModal = state => state.modal.showModal;
-
-export const selectItemsModal = state => state.modal.item;
-
 export const selectResultContact = createSelector(
   selectContacts,
   selectFilter,

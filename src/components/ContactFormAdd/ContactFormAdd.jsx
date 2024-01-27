@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import styles from './ContactFormAdd.module.css';
 import { addContact } from '../../redux/contacts/operations';
+import { VscAdd } from 'react-icons/vsc';
 
 export const ContactFormAdd = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ export const ContactFormAdd = () => {
 
   return (
     <>
+      <h2>Create contact</h2>
       <div className={styles.form}>
         <div>
           <form onSubmit={handleSubmit} className={styles.form}>
@@ -42,7 +44,10 @@ export const ContactFormAdd = () => {
               />
             </label>
 
-            <button type="submit">Add Contact</button>
+            <button className={styles.button} type="submit">
+              Add Contact
+              <VscAdd />
+            </button>
           </form>
         </div>
       </div>

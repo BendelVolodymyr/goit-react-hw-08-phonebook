@@ -46,15 +46,10 @@ export const UpdateInExistingContact = createAsyncThunk(
   async (obj, { rejectWithValue }) => {
     const { id, name, number } = obj;
     try {
-      const { data } = await axios.patch(
-        `/contacts/${id}`,
-        JSON.stringify({ name: name, number: number }),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const { data } = await axios.patch(`/contacts/${id}`, {
+        name: name,
+        number: number,
+      });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
