@@ -4,10 +4,12 @@ import styles from './ContactFormAdd.module.css';
 import { addContact } from '../../redux/contacts/operations';
 import { IoPersonAddOutline } from 'react-icons/io5';
 import { useContacts } from 'hooks/useContacts';
+import { useAuth } from 'hooks/useAuth';
 
 export const ContactFormAdd = () => {
   const dispatch = useDispatch();
   const { contacts } = useContacts();
+  const { user } = useAuth();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -20,9 +22,9 @@ export const ContactFormAdd = () => {
         element.phone === number
       );
     });
-    
+
     if (validForm) {
-      alert('The contact is already in your book');
+      alert(`${user.name} The contact is already in your book`);
     } else {
       dispatch(
         addContact({
