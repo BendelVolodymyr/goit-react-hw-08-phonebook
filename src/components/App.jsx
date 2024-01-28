@@ -6,6 +6,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from '../redux/auth/operations';
+import { Spiner } from './Spiner/Spiner';
 
 const Home = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -22,7 +23,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Зачекайте оновлення... Refreshing user...</b>
+    <Spiner />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>

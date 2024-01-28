@@ -3,6 +3,8 @@ import styles from '../ContactsList.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../../redux/contacts/operations';
 import { Modal } from 'components/Modal/Modal';
+import { VscEdit } from 'react-icons/vsc';
+import { AiOutlineUserDelete } from 'react-icons/ai';
 
 export const ContactListItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -19,14 +21,14 @@ export const ContactListItem = ({ item }) => {
   return (
     <>
       <li key={item.id} className={styles.list}>
-        <p>
+        <div className={styles.list__box_contact}>
           <b>{item.name}</b> <b>{item.number}</b>
-        </p>
+        </div>
         <button type="button" onClick={toogle}>
-          Edit
+          <VscEdit />
         </button>
         <button type="button" onClick={() => handleDelete(item.id)}>
-          Delete
+          <AiOutlineUserDelete />
         </button>
       </li>
       {showModal && <Modal item={item} toogle={toogle} />}

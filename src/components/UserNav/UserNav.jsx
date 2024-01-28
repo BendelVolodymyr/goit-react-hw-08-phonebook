@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { LogOut } from '../../redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
-import { BiCaretDown } from 'react-icons/bi';
 import styles from './UserNav.module.css';
+import { VscAccount } from 'react-icons/vsc';
 export const UserNav = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
@@ -12,11 +12,10 @@ export const UserNav = () => {
       <div className={styles.global_box__out}>
         <p className={styles.global_box__out_text}>
           {user.email}
-          {<BiCaretDown />}
+          {<VscAccount />}
         </p>
         <div className={styles.box__out}>
           <p>{user.name}</p>
-          <p></p>
           <button
             onClick={() => {
               dispatch(LogOut());

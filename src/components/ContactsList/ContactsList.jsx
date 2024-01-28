@@ -1,9 +1,5 @@
 import { useContacts } from 'hooks/useContacts';
 import styles from './ContactsList.module.css';
-import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/operations';
-import { useState } from 'react';
-import { Modal } from 'components/Modal/Modal';
 import { ContactListItem } from './ContactListItem/ContactListItem';
 
 export const ContactsList = () => {

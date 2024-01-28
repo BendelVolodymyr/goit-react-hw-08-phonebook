@@ -17,10 +17,6 @@
     padding: 10px;
 }
 
-.box__out:hover {
-    color: #2F3761;
-}
-
 .global_box__out_text:hover {
     color: #2F3761;
 
@@ -29,4 +25,25 @@
 .global_box__out:hover .box__out {
     visibility: visible;
     display: block;
+}
+
+.global_box__out_text {
+    display: flex;
+    gap: 10px;
+}
+
+.box__out button {
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #e55d87;
+    transition: transform 100ms ease-in-out;
+}
+
+.box__out button:hover {
+    transform: scale(1.1);
+}
+
+.box__out button:active {
+    transform: scale(0.8);
 }

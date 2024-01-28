@@ -4,6 +4,7 @@ const { LogIn, createUser, LogOut, refreshUser } = require('./operations');
 
 const handlePending = (state, { payload }) => {
   state.isRefreshing = true;
+  state.errorFulfilled = false;
 };
 
 const authSlice = createSlice({
@@ -14,19 +15,29 @@ const authSlice = createSlice({
     isRefreshing: false,
     isLoggedIn: false,
     error: null,
+    errorFulfilled: false,
   },
 
   extraReducers: builder => {
     builder
-      .addCase(createUser.pending, handlePending)
+      .addCase(createUser.pending, state => {
+        state.errorFulfilled = false;
+      })
       .addCase(createUser.fulfilled, (state, { payload }) => {
-        state.isLoggedIn = true;
-        state.user = payload.user;
-        state.token = payload.token;
+        // при запиті, якщо вводиш дані які вже присутні в базі даних повертає статус 400 в fulfilled з пустим payload === undefined
+        if (payload !== undefined) {
+          state.isRefreshing = false;
+          state.user = payload.user;
+          state.token = payload.token;
+          state.isLoggedIn = true;
+        } else {
+          state.errorFulfilled = true;
+        }
       })
       .addCase(createUser.rejected, (state, { payload }) => {
-        state.isRefreshing = false;
         state.error = payload;
+        state.isRefreshing = false;
+        state.errorFulfilled = false;
       })
       .addCase(LogOut.pending, handlePending)
       .addCase(LogOut.fulfilled, (state, { payload }) => {
@@ -34,22 +45,22 @@ const authSlice = createSlice({
         state.user = { name: null, email: null };
         state.token = null;
         state.isRefreshing = false;
+        state.errorFulfilled = false;
       })
       .addCase(LogOut.rejected, (state, { payload }) => {
         state.isRefreshing = false;
         state.error = payload;
       })
-      .addCase(LogIn.pending, handlePending)
       .addCase(LogIn.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
-        state.isRefreshing = false;
+        state.errorFulfilled = false;
       })
       .addCase(LogIn.rejected, (state, { payload }) => {
-        state.isRefreshing = false;
         state.isLoggedIn = false;
         state.error = payload;
+        state.errorFulfilled = true;
       })
 
       .addCase(refreshUser.pending, handlePending)

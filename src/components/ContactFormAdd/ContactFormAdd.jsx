@@ -1,18 +1,29 @@
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './ContactFormAdd.module.css';
 import { addContact } from '../../redux/contacts/operations';
-import { VscAdd } from 'react-icons/vsc';
+import { IoPersonAddOutline } from 'react-icons/io5';
+import { useContacts } from 'hooks/useContacts';
 
 export const ContactFormAdd = () => {
   const dispatch = useDispatch();
+  const { contacts } = useContacts();
 
   const handleSubmit = e => {
     e.preventDefault();
     const name = e.currentTarget.elements.name.value.trim();
     const number = e.currentTarget.elements.number.value.trim();
-    const validForm = name === '' || number === '';
 
-    if (!validForm) {
+    const validForm = contacts.some(function (element) {
+      return (
+        element.name.toLowerCase() === name.toLowerCase() ||
+        element.phone === number
+      );
+    });
+    
+    if (validForm) {
+      alert('The contact is already in your book');
+    } else {
       dispatch(
         addContact({
           name: name,
@@ -20,8 +31,6 @@ export const ContactFormAdd = () => {
         })
       );
       e.currentTarget.reset();
-    } else {
-      alert('Друже поле не може бути пустим');
     }
   };
 
@@ -44,9 +53,8 @@ export const ContactFormAdd = () => {
               />
             </label>
 
-            <button className={styles.button} type="submit">
-              Add Contact
-              <VscAdd />
+            <button type="submit">
+              <IoPersonAddOutline />
             </button>
           </form>
         </div>

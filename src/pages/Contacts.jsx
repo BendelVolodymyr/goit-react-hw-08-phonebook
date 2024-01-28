@@ -2,7 +2,6 @@ import React from 'react';
 import { ContactFormAdd } from 'components/ContactFormAdd/ContactFormAdd';
 import { useContacts } from '../hooks/useContacts';
 import { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
 import { useDispatch } from 'react-redux';
 import { fetchContacts } from '../redux/contacts/operations';
 import { ContactsList } from 'components/ContactsList/ContactsList';

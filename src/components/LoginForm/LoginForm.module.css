@@ -5,7 +5,12 @@
     background: linear-gradient(135deg, #5fc3e4 0%, #e55d87 100%);
 }
 
+.box__form_title {
+    margin-bottom: 20px;
+}
+
 .box__form {
+    position: relative;
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
@@ -15,16 +20,73 @@
     border: double 5px #5fc3e4;
 }
 
+.input__box {
+    position: relative;
+}
+
+.input__box input {
+    width: 100%;
+    color: #ffffff;
+
+}
+
+.input__box input:focus {
+    outline-color: #2F3761;
+    outline-style: double 2px;
+}
+
+.input__box input:focus~label,
+.input__box input:valid~label {
+    top: -20px;
+    left: 5px;
+    font-size: 15px;
+    color: #2F3761;
+}
+
+
+.input__box label {
+    color: #2F3761;
+    position: absolute;
+    transition: 0.5s;
+    top: 0;
+    left: 10px;
+    pointer-events: none;
+    font-size: 19px;
+}
+
 .form {
     max-width: 320px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
 }
 
 .label {
     display: flex;
     flex-direction: column;
     text-align: end;
+}
+
+.form__box_error {
+    bottom: 0;
+    left: 40px;
+    position: absolute;
+    z-index: 10;
+}
+
+button {
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #5fc3e4;
+    transition: transform 100ms ease-in-out;
+}
+
+button:active {
+    transform: scale(0.8);
+}
+
+button:hover {
+    transform: scale(1.1);
 }
